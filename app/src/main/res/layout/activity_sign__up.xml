@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:background="@color/logo_color">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="56dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:orientation="vertical"
+        >
+        <!-- Logo -->
+
+        <!--User_name-->
+        <ImageView
+            android:src="@drawable/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/imageView" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:inputType="textCapWords"
+                android:id="@+id/user_name"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <!--User_Email-->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/user_email_id"
+                android:textColorHint="@color/white"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/white"
+                android:hint="Email Address"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <!--Password-->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:id="@+id/user_password"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <!--Button-->
+        <android.support.v7.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sign_up_btn"
+            android:text="Create Account"
+            android:background="#4082b8"
+            android:elevation="4dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:padding="10dp"/>
+
+        <!--link-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Already a Member? Sign In.."
+            android:textColor="@color/white"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:id="@+id/signin_link"
+            android:textAlignment="center"/>
+
+
+        <ProgressBar
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/progressBar"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+</ScrollView>

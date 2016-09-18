@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.example.bhavinjobanputra.jobson.Log_In"
+    android:background="@color/logo_color">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="56dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
+
+
+        <ImageView
+            android:src="@drawable/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Please enter your emial address to reset your password. We will send you a link to your email address."
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="16dip"
+            android:id="@+id/forgot_text"
+            android:textAlignment="center" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/email_input"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:inputType="textEmailAddress"
+                android:hint="Enter Your Email Address"
+                android:textColorHighlight="@color/white"
+                android:textColorLink="@color/white" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/submit"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="24dp"
+            android:padding="12dp"
+            android:textColor="@color/white"
+            android:text="Submit"
+            android:elevation="4dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#4082b8" />
+        <ProgressBar
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/progressBar"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
+
+    </LinearLayout>
+</ScrollView>

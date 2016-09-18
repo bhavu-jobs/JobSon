@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1024374296870",
+    "firebase_url": "https://jobson-cf868.firebaseio.com",
+    "project_id": "jobson-cf868",
+    "storage_bucket": "jobson-cf868.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1024374296870:android:ac2b2e5df1d08bce",
+        "android_client_info": {
+          "package_name": "com.example.bhavinjobanputra.jobson"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1024374296870-1418i7jrfvd71a4au3q2rs15mentiiqd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCo5vcIzw3TWuruWu8qsG1qwiHoJowVAQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

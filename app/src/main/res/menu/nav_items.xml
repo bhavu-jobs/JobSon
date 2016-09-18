@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/ic_home"
+            android:title="Home"/>
+        <item
+            android:id="@+id/subheader"
+            android:title="Categories">
+            <menu>
+                <item
+                    android:id="@+id/wallclocks"
+                    android:icon="@drawable/ic_wall_clock"
+                    android:title="Wall Clocks"/>
+                <item
+                    android:id="@+id/familyff"
+                    android:icon="@drawable/ic_ff"
+                    android:title="Family Photo Frame"/>
+                <item
+                    android:id="@+id/mandir"
+                    android:icon="@drawable/ic_mandir"
+                    android:title="Mandir"/>
+                <item
+                    android:id="@+id/lighting"
+                    android:icon="@drawable/ic_mandir"
+                    android:title="Lighting Frames"/>
+            </menu>
+        </item>
+        <item
+            android:id="@+id/subheader1"
+            android:title="Other">
+            <menu>
+                <item
+                    android:id="@+id/settings"
+                    android:icon="@drawable/ic_settings"
+                    android:title="Settings"/>
+                <item
+                    android:id="@+id/about_us"
+                    android:icon="@drawable/ic_about_us"
+                    android:title="About Us"/>
+            </menu>
+        </item>
+    </group>
+
+</menu>

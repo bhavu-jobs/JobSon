@@ -28,7 +28,11 @@
         <activity android:name=".Sign_Up" />
         <activity android:name=".Main_Activity" />
         <activity android:name=".Order_Page" />
-        <activity android:name=".Forgot_Pass"></activity>
+        <activity android:name=".Forgot_Pass" />
+        <activity
+            android:name=".avx"
+            android:label="@string/title_activity_avx"
+            android:theme="@style/Mytheme"></activity>
     </application>
 
 </manifest>

@@ -20,32 +20,11 @@
                android:layout_width="match_parent"
                android:layout_height="wrap_content" />
 
-           <com.daimajia.slider.library.SliderLayout
-               android:id="@+id/slider"
+           <FrameLayout
                android:layout_width="match_parent"
-               android:layout_height="200dp"
-               custom:pager_animation="Accordion"
-               app:auto_cycle="true"
-               app:indicator_visibility="visible"
-               app:pager_animation_span="1100"/>
-
-           <com.daimajia.slider.library.Indicators.PagerIndicator
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:id="@+id/indicator"
-               android:gravity="center">
-           </com.daimajia.slider.library.Indicators.PagerIndicator>
-
-
-               <android.support.v7.widget.RecyclerView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:scrollbars="vertical"
-                   android:id="@+id/rview"
-                   android:layout_below="@id/slider"
-                   android:background="@color/logo_color">
-               </android.support.v7.widget.RecyclerView>
-
+               android:layout_height="match_parent"
+               android:id="@+id/default_content">
+           </FrameLayout>
        </LinearLayout>
 
 

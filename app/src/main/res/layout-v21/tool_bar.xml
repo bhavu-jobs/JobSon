@@ -12,6 +12,7 @@
     android:logo="@drawable/logo"
     android:theme="@style/ToolbarTheme"
     android:contentInsetStart="0dp"
+    android:fitsSystemWindows="true"
     android:contentInsetLeft="0dp"
     android:title="Hi">
 

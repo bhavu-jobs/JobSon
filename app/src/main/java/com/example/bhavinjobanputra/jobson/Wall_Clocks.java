@@ -61,10 +61,10 @@ public class Wall_Clocks extends Fragment
         textView = (TextView) view.findViewById(R.id.textView);
         textView.setText(title);
         recyclerView = (RecyclerView) view.findViewById(R.id.rview);
-        item_adapter = new Item_Adapter(item_list);
+        item_adapter = new Item_Adapter(this,item_list);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(new Divider(getActivity(),LinearLayoutManager.VERTICAL));
+        recyclerView.addItemDecoration(new Divider(getActivity(),Divider.VERTICAL_LIST));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(item_adapter);
         preparedata();

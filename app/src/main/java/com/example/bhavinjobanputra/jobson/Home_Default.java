@@ -86,10 +86,9 @@ public class Home_Default extends Fragment implements BaseSliderView.OnSliderCli
         sliderLayout.addOnPageChangeListener(this);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.rview);
-        item_adapter = new Item_Adapter(item_list);
+        item_adapter = new Item_Adapter(this,item_list);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(new Divider(getContext(),LinearLayoutManager.VERTICAL));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(item_adapter);
         preparedata();

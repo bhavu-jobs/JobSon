@@ -103,6 +103,12 @@ public class Main_Activity extends AppCompatActivity{
                 choice=4;
                 fragmentclass = Wall_Clocks.class;
                 break;
+            case R.id.about_us:
+                fragmentclass = About_Us.class;
+                break;
+            case R.id.settings:
+                fragmentclass = setting.class;
+                break;
             default:
                 fragmentclass = Home_Default.class;
         }
@@ -151,8 +157,18 @@ public class Main_Activity extends AppCompatActivity{
                 Log.d("burger", "akhu");
                 return true;
             case R.id.cart:
-                Intent orderPage = new Intent(this, Order_Page.class);
-                startActivity(orderPage);
+                Fragment fragment = null;
+                Class fragmentclass;
+                fragmentclass = cart.class;
+                try {
+                    fragment = (Fragment) fragmentclass.newInstance();
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.default_content, fragment).addToBackStack("Cart").commit();
                 return true;
             case R.id.sign_out:
                 AlertDialog.Builder alert = new AlertDialog.Builder(Main_Activity.this);

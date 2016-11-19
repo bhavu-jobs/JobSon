@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.bhavinjobanputra.jobson.description"
+    android:background="@color/logo_color">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:src="@drawable/logo"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/black"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dip"
+            android:layout_marginBottom="12dp"
+            android:text="Product Name"
+            android:paddingLeft="10dp"
+            android:textColor="@color/white"
+            android:textSize="22dip"
+            android:id="@+id/p_name"
+            android:background="#4082b8"
+            android:gravity="center_vertical"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dip"
+            android:layout_marginBottom="12dp"
+            android:text="Size"
+            android:paddingLeft="10dp"
+            android:textColor="@color/white"
+            android:textSize="22dip"
+            android:gravity="center_vertical"
+            android:id="@+id/p_size"
+            android:background="#4082b8"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dip"
+            android:layout_marginBottom="12dp"
+            android:text="Price"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:textColor="@color/white"
+            android:textSize="22dip"
+            android:id="@+id/p_price"
+            android:background="#4082b8"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="Description:"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:textColor="@color/white"
+            android:textSize="22dip"
+            android:id="@+id/p_desc"
+            android:background="#4082b8"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/add"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="24dp"
+            android:padding="12dp"
+            android:textColor="@color/white"
+            android:text="Add to Cart"
+            android:elevation="4dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#607D8B" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Wall Clocks"
+                android:text="Added Items to cart"
                 android:layout_gravity="center_vertical"
                 android:id="@+id/textView" />
         </TableRow>
@@ -36,5 +36,33 @@
             android:layout_below="@id/table_row"
             android:background="@color/white">
         </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="25dip"
+            android:text="Total Cart Price: "
+            android:textColor="@color/white"
+            android:textSize="16dip"
+            android:id="@+id/cart_price"
+            android:background="#4082b8"
+            android:layout_marginTop="16dp"
+            android:paddingLeft="16dp"
+            android:gravity="center_vertical"
+            />
+
+        <android.support.v7.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/place_order"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="24dp"
+            android:padding="12dp"
+            android:textColor="@color/white"
+            android:text="Place Order"
+            android:elevation="4dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#4082b8" />
+
+
     </LinearLayout>
 </RelativeLayout>

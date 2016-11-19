@@ -1,5 +1,10 @@
 package com.example.bhavinjobanputra.jobson;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
@@ -16,8 +21,9 @@ import java.util.List;
 public class Item_Adapter extends RecyclerView.Adapter<Item_Adapter.MyViewHolder> {
 
     private List<Item_list> itemList;
+    Fragment a;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView prodcut_id,category,size,brand,price;
         public ImageView i_image;
 
@@ -31,9 +37,17 @@ public class Item_Adapter extends RecyclerView.Adapter<Item_Adapter.MyViewHolder
             brand= (TextView) view.findViewById(R.id.brand);
             price = (TextView) view.findViewById(R.id.price);
          }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(a.getActivity(),Description_Item.class);
+            a.startActivity(intent);
+
+        }
     }
 
-    public Item_Adapter(List<Item_list> itemList){
+    public Item_Adapter(Fragment a, List<Item_list> itemList){
+        this.a = a;
         this.itemList = itemList;
     }
 

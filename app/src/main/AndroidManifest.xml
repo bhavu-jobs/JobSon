@@ -32,7 +32,8 @@
         <activity
             android:name=".avx"
             android:label="@string/title_activity_avx"
-            android:theme="@style/Mytheme"></activity>
+            android:theme="@style/Mytheme" />
+        <activity android:name=".Description_Item"></activity>
     </application>
 
 </manifest>

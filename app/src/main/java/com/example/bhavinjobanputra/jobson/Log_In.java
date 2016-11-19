@@ -30,13 +30,17 @@ public class Log_In extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     ProgressBar progressBar;
     TextView forgotpass;
+    ProgressDialog progressDialog;
     int i=0;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
+        progressDialog = new ProgressDialog(Log_In.this);
         firebaseAuth = FirebaseAuth.getInstance();
-        if(firebaseAuth.getCurrentUser() != null){
+        if(firebaseAuth.getCurrentUser() != null)
+        {
             Intent main_activity = new Intent(Log_In.this,Main_Activity.class);
             startActivity(main_activity);
         }
@@ -49,7 +53,11 @@ public class Log_In extends AppCompatActivity {
 
         //Login Method
         Log_In_Btn.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
+            public void onClick(View view)
+            {
+                progressDialog.setMessage("Loading...");
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDialog.show();
                 login_method();
             }
         });
@@ -75,10 +83,12 @@ public class Log_In extends AppCompatActivity {
     String email;
     String password;
 
-    public void login_method(){
+    public void login_method()
+    {
         Log.d("Login_in", "Login");
 
-        if(!validate()){
+        if(!validate())
+        {
             onloginfailed();
             return;
         }
@@ -117,15 +127,17 @@ public class Log_In extends AppCompatActivity {
         }
     }
 
-    public void onloginSuccess() {
-
+    public void onloginSuccess()
+    {
+        progressDialog.hide();
         Toast.makeText(getBaseContext(), "Login Successfull", Toast.LENGTH_LONG).show();
         Log_In_Btn.setEnabled(true);
         Intent main_activity = new Intent(getApplicationContext(),Main_Activity.class);
         startActivity(main_activity);
     }
 
-    public boolean validate(){
+    public boolean validate()
+    {
         boolean VALID = true;
         email = email_input.getText().toString();
         password = password_input.getText().toString();
@@ -147,12 +159,16 @@ public class Log_In extends AppCompatActivity {
         return VALID;
     }
 
-    public void onloginfailed(){
+    public void onloginfailed()
+    {
+        progressDialog.hide();
         Toast.makeText(getBaseContext(),"Login Failed Please Try Again!!",Toast.LENGTH_LONG).show();
         Log_In_Btn.setEnabled(true);
     }
 
-    public void onloginfailed_incorrect(){
+    public void onloginfailed_incorrect()
+    {
+        progressDialog.hide();
         Toast.makeText(getBaseContext(),"Username or password is invalid.",Toast.LENGTH_SHORT).show();
         Log_In_Btn.setEnabled(true);
     }

@@ -18,15 +18,18 @@ public class Item_Adapter extends RecyclerView.Adapter<Item_Adapter.MyViewHolder
     private List<Item_list> itemList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        public TextView i_name,price,seller;
+        public TextView prodcut_id,category,size,brand,price;
         public ImageView i_image;
 
-        public MyViewHolder(View view){
+        public MyViewHolder(View view)
+        {
             super(view);
             i_image = (ImageView) view.findViewById(R.id.icon);
-            i_name = (TextView) view.findViewById(R.id.p_name);
+            prodcut_id = (TextView) view.findViewById(R.id.product_id);
+            category = (TextView) view.findViewById(R.id.category);
+            size = (TextView) view.findViewById(R.id.size);
+            brand= (TextView) view.findViewById(R.id.brand);
             price = (TextView) view.findViewById(R.id.price);
-            seller = (TextView) view.findViewById(R.id.seller);
          }
     }
 
@@ -43,10 +46,12 @@ public class Item_Adapter extends RecyclerView.Adapter<Item_Adapter.MyViewHolder
 
     public void onBindViewHolder(MyViewHolder holder,int position){
         Item_list i_list = itemList.get(position);
-        holder.i_name.setText(i_list.getI_name());
+        holder.prodcut_id.setText(i_list.getProduct_id());
+        holder.category.setText(i_list.getCategory());
+        holder.size.setText(i_list.getSize());
+        holder.brand.setText(i_list.getBrand());
         holder.price.setText(i_list.getPrice());
-        holder.seller.setText(i_list.getSeller());
-        holder.i_image.setImageResource(i_list.getImage_id());
+        holder.i_image.setImageResource(i_list.getImage());
     }
 
     @Override

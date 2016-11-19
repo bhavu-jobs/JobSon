@@ -36,6 +36,7 @@ import java.util.List;
 public class Main_Activity extends AppCompatActivity{
 
     int i = 0;
+    int choice;
     Toolbar toolbar;
     NavigationView navigationView;
     DrawerLayout drawerLayout;
@@ -43,10 +44,12 @@ public class Main_Activity extends AppCompatActivity{
     FirebaseAuth.AuthStateListener authListener;
 
 
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_);
-        if (savedInstanceState == null) {
+        if (savedInstanceState == null)
+        {
             getSupportFragmentManager().beginTransaction().replace(R.id.default_content, new Home_Default()).commit();
         }
         setToolbar();
@@ -73,36 +76,47 @@ public class Main_Activity extends AppCompatActivity{
         });
     }
 
-    public void navigation_selection(MenuItem menuItem) {
+    public void navigation_selection(MenuItem menuItem)
+    {
 
         Fragment fragment = null;
         Class fragmentclass;
-        switch (menuItem.getItemId()) {
+        switch (menuItem.getItemId())
+        {
             case R.id.wallclocks:
+                choice=1;
                 fragmentclass = Wall_Clocks.class;
                 break;
             case R.id.home:
+
                 fragmentclass = Home_Default.class;
                 break;
             case R.id.familyff:
+                choice=2;
                 fragmentclass = Wall_Clocks.class;
                 break;
             case R.id.mandir:
+                 choice=3;
                 fragmentclass = Wall_Clocks.class;
                 break;
             case R.id.lighting:
+                choice=4;
                 fragmentclass = Wall_Clocks.class;
                 break;
             default:
                 fragmentclass = Home_Default.class;
         }
 
-        try{
+        try
+        {
             fragment = (Fragment) fragmentclass.newInstance();
             Bundle bundle = new Bundle();
             bundle.putString("title",menuItem.getTitle().toString());
+            bundle.putInt("Choice",choice);
             fragment.setArguments(bundle);
-        }catch (Exception E){
+        }
+        catch (Exception E)
+        {
             E.printStackTrace();
         }
 

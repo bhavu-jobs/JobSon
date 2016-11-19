@@ -30,21 +30,29 @@ public class Sign_Up extends AppCompatActivity {
     EditText user_name;
     ProgressBar progressBar;
     private FirebaseAuth firebaseAuth;
+    ProgressDialog progressDialog;
     int i=0;
 
     //On Create
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign__up);
+        progressDialog = new ProgressDialog(Sign_Up.this);
         Sign_Up_Btn = (Button) findViewById(R.id.sign_up_btn);
         Log_in_text = (TextView) findViewById(R.id.signin_link);
         email_input = (EditText) findViewById(R.id.user_email_id);
         user_name = (EditText) findViewById(R.id.user_name);
         password_input = (EditText) findViewById(R.id.user_password);
 
-        Sign_Up_Btn.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
+        Sign_Up_Btn.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View view)
+            {
+                progressDialog.setMessage("Loading..");
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDialog.show();
                 signup();
             }
         });
@@ -57,10 +65,12 @@ public class Sign_Up extends AppCompatActivity {
         });
     }
 
-    public void signup(){
+    public void signup()
+    {
         Log.d("Sign Up ","Inn Sign Up Method");
 
-        if(!validate()){
+        if(!validate())
+        {
             onSignupFailed();
             return;
         }
@@ -120,12 +130,16 @@ public class Sign_Up extends AppCompatActivity {
         return valid;
     }
 
-    public void onSignupFailed(){
+    public void onSignupFailed()
+    {
+        progressDialog.hide();
         Toast.makeText(getBaseContext(),"Please enter proper details..",Toast.LENGTH_SHORT).show();
         Sign_Up_Btn.setEnabled(true);
     }
 
-    public void onsignupsuccess(){
+    public void onsignupsuccess()
+    {
+        progressDialog.hide();
         Toast.makeText(getBaseContext(),"Sign Up success",Toast.LENGTH_SHORT).show();
         Intent signup_activity = new Intent(Sign_Up.this,Main_Activity.class);
         startActivity(signup_activity);

@@ -1,56 +1,83 @@
 package com.example.bhavinjobanputra.jobson;
 
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Home_Default extends Fragment implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
+public class Home_Default extends Fragment implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener
+{
 
     private SliderLayout sliderLayout;
     RecyclerView recyclerView;
     private Item_Adapter item_adapter;
     private List<Item_list> item_list = new ArrayList<>();
-
-
+    String url = "http://192.168.137.1/Jobson/files.php";
+    String files[];
+    String image_url = "http://192.168.137.1/Jobson/images/";
+    String new_url = "http://192.168.137.1/Jobson/tp.php";
+    String product_id;
+    String price;
+    String brand;
+    String size;
+    String category;
+    String image;
     public Home_Default() {
-        // Required empty public constructor
+
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home__default, container, false);
         sliderLayout = (SliderLayout) view.findViewById(R.id.slider);
-        HashMap<String,Integer> image_map = new HashMap<String,Integer>();
-        image_map.put("T-109",R.drawable.t);
-        image_map.put("T-105",R.drawable.t_one);
-        image_map.put("T-93",R.drawable.t_two);
 
-        for(String name : image_map.keySet()){
-            TextSliderView textSliderView = new TextSliderView(getActivity());
-            textSliderView.image(image_map.get(name)).setOnSliderClickListener(this);
-            textSliderView.bundle(new Bundle());
-            textSliderView.getBundle().putString("extra",name);
-            sliderLayout.addSlider(textSliderView);
-        }
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response)
+                    {
+                        files = response.split(" ");
+                        changePictures(files);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        MySingleton.getInstance(getContext()).addToRequestQueue(stringRequest);
 
         sliderLayout.setPresetTransformer(SliderLayout.Transformer.Accordion);
         sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
@@ -62,31 +89,81 @@ public class Home_Default extends Fragment implements BaseSliderView.OnSliderCli
         item_adapter = new Item_Adapter(item_list);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(new Divider(getActivity(),LinearLayoutManager.VERTICAL));
+        recyclerView.addItemDecoration(new Divider(getContext(),LinearLayoutManager.VERTICAL));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(item_adapter);
         preparedata();
         return view;
     }
 
-    public void preparedata(){
-        Item_list il = new Item_list(R.drawable.ic_cart,"T-113","98.00","Bhavani Pvt.ltd");
-        item_list.add(il);
-        il = new Item_list(R.drawable.ic_cart,"T-113","98.00","Bhavani Pvt.ltd");
-        item_list.add(il);
-        il = new Item_list(R.drawable.ic_cart,"T-114","99.00","Bhavani Pvt.ltd");
-        item_list.add(il);
-        il = new Item_list(R.drawable.ic_cart,"T-115","99.00","Bhavani Pvt.ltd");
-        item_list.add(il);
-        il = new Item_list(R.drawable.ic_cart,"T-116","99.00","Bhavani Pvt.ltd");
-        item_list.add(il);
-        il = new Item_list(R.drawable.ic_cart,"T-117","99.00","Bhavani Pvt.ltd");
-        item_list.add(il);
-        il = new Item_list(R.drawable.ic_cart,"T-118    ","99.00","Bhavani Pvt.ltd");
-        item_list.add(il);
-        item_adapter.notifyDataSetChanged();
+    public void preparedata()
+    {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(new_url,null,new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response)
+                {
+                    try
+                    {
+                        JSONArray jsonArray = response.getJSONArray("products");
+                        for(int i=0;i<jsonArray.length();i++)
+                        {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            product_id = jsonObject.getString("product_id");
+                            category = jsonObject.getString("category");
+                            size = jsonObject.getString("size");
+                            brand = jsonObject.getString("brand_name");
+                            price = jsonObject.getString("price");
+                            //image = jsonObject.getString("image_url");
+
+                            Item_list il = new Item_list(R.drawable.logo,product_id,category,size,brand,price);
+                            item_list.add(il);
+                            /*ImageRequest imageRequest = new ImageRequest(url_final+image, new Response.Listener<Bitmap>() {
+                                @Override
+                                public void onResponse(Bitmap response)
+                                {
+                                    Log.d("Response","Response madyo baka!");
+
+                                }
+                            },100,100,null, Bitmap.Config.RGB_565, new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error)
+                                {
+                                    Toast.makeText(getContext(),"Volley Error",Toast.LENGTH_SHORT).show();
+                                    Log.d("VOlley",""+error.getMessage());
+                                }
+                            });*/
+
+                            item_adapter.notifyDataSetChanged();
+
+                        }
+                    }
+                    catch (JSONException e)
+                    {
+                        Toast.makeText(getContext(),"Error in JSON",Toast.LENGTH_LONG).show();
+                        Log.d("Here",e.getMessage());
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error)
+                {
+                    Toast.makeText(getContext(),"Error in Volley",Toast.LENGTH_LONG).show();
+                    Log.d("Here",error.getMessage());
+                }
+            });
+
+            MySingleton.getInstance(getContext()).addToRequestQueue(jsonObjectRequest);
     }
 
+    public void changePictures(String files[])
+    {
+        for(int i=0;i<files.length;i++)
+        {
+            TextSliderView textSliderView = new TextSliderView(getActivity());
+            textSliderView.image(image_url+files[i]).setOnSliderClickListener(this);
+            sliderLayout.addSlider(textSliderView);
+        }
+    }
     public void onStop(){
         super.onStop();
         sliderLayout.stopAutoCycle();

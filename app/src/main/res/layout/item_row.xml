@@ -15,44 +15,53 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="false"
         android:layout_alignWithParentIfMissing="false" />
-
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:id="@+id/p_name"
-        android:layout_alignParentRight="true"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_alignParentTop="true"
-        android:textSize="14dp"
-        android:layout_toRightOf="@+id/icon"
-        android:text="Bhavin KHDisahifiqwkf[qwofcqoufw caifc iefychwia fucifu weifyhiwqehd ofc"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/icon">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:id="@+id/price"
-        android:layout_below="@id/p_name"
-        android:paddingTop="5dp"
-        android:singleLine="true"
-        android:ellipsize="marquee"
-        android:textSize="12dp"
-        android:textColor="@color/black"
-        android:layout_alignWithParentIfMissing="true"
-        android:layout_toRightOf="@+id/icon"
-        android:text="300.00"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:id="@+id/seller"
-        android:layout_below="@id/price"
-        android:ellipsize="marquee"
-        android:textColor="@color/black"
-        android:layout_alignWithParentIfMissing="true"
-        android:paddingTop="5dp"
-        android:textSize="12dp"
-        android:layout_toRightOf="@+id/icon"
-        android:text="Bhavani PVt. Ltd."/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Product ID"
+            android:id="@+id/product_id"
+            android:layout_marginTop="1dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:id="@+id/category"
+            android:textColor="@color/black"
+            android:layout_marginTop="1dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Size"
+            android:id="@+id/size"
+            android:textColor="@color/black"
+            android:layout_marginTop="1dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Brand"
+            android:id="@+id/brand"
+            android:textColor="@color/black"
+            android:layout_marginTop="1dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            android:layout_marginTop="1dp"
+            android:textColor="@color/black"
+            android:id="@+id/price" />
+    </LinearLayout>
+
 
 </RelativeLayout>

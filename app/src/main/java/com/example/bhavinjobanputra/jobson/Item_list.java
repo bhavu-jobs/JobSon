@@ -1,5 +1,6 @@
 package com.example.bhavinjobanputra.jobson;
 
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -8,24 +9,60 @@ import android.widget.ImageView;
  */
 public class Item_list {
 
-    private String i_name,seller,price;
-    private int image_id;
+    private String product_id,category,size,brand,price;
+    private int image;
 
 
-    public int getImage_id() {
-        return image_id;
-    }
 
-    public void setImage_id(int image_id) {
-        this.image_id = image_id;
-    }
 
-    public Item_list(int image_id, String i_name, String price, String seller){
-        this.i_name = i_name;
-        this.image_id = image_id;
-
+    public Item_list(int image, String product_id, String category, String size, String brand, String price)
+    {
+        this.image = image;
+        this.category = "Category: "+category;
         this.price = "Price : " + price;
-        this.seller ="Seller : " + seller;
+        this.brand ="Brand : " + brand;
+        this.size= "Size: "+size;
+        this.product_id= "Job_"+product_id;
+    }
+
+    public int getImage()
+    {
+        return image;
+    }
+
+    public void setImage(int image)
+    {
+        this.image = image;
+    }
+
+    public String getProduct_id(){return  product_id;}
+
+    public void setProduct_id(String product_id){this.product_id = product_id;}
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+        Log.d("sfksk",this.price);
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size= size;
+        Log.d("sfksk",this.price);
+    }
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+        Log.d("sfksk",this.price);
     }
 
     public String getPrice() {
@@ -37,19 +74,5 @@ public class Item_list {
         Log.d("sfksk",this.price);
     }
 
-    public String getSeller() {
-        return seller;
-    }
 
-    public void setSeller(String seller) {
-        this.seller = seller;
-    }
-
-    public String getI_name() {
-        return i_name;
-    }
-
-    public void setI_name(String i_name) {
-        this.i_name = i_name;
-    }
 }

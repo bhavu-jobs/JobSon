@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text="Please enter your emial address to reset your password. We will send you a link to your email address."
+            android:text="Please enter your email address to reset your password."
             android:layout_gravity="center_horizontal"
             android:textColor="@color/white"
             android:textSize="16dip"

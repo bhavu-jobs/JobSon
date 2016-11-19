@@ -1,5 +1,6 @@
 package com.example.bhavinjobanputra.jobson;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.media.Image;
 import android.support.annotation.NonNull;
@@ -21,7 +22,8 @@ public class Forgot_Pass extends AppCompatActivity {
     EditText email;
     Button submit;
     FirebaseAuth firebaseAuth;
-    ProgressBar progressBar;
+    ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,29 +31,40 @@ public class Forgot_Pass extends AppCompatActivity {
         email = (EditText) findViewById(R.id.email_input);
         submit = (Button) findViewById(R.id.submit);
         firebaseAuth = FirebaseAuth.getInstance();
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressDialog = new ProgressDialog(Forgot_Pass.this);
+        progressDialog.setMessage("Loading...");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
-        submit.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
+        submit.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View view)
+            {
+                progressDialog.show();
                 final String input = email.getText().toString();
                 if(!validate()){
                     Toast.makeText(getBaseContext(),"Please try again.",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                 Log.d("gayu","addhu");
-                 progressBar.setVisibility(View.VISIBLE);
-                 firebaseAuth.sendPasswordResetEmail(input).addOnCompleteListener(new OnCompleteListener<Void>() {
+                 Log.d("gayula","addhu");
+
+                 firebaseAuth.sendPasswordResetEmail(input).addOnCompleteListener(new OnCompleteListener<Void>()
+                 {
                  @Override
-                 public void onComplete(@NonNull Task<Void> task) {
-                      if(task.isSuccessful()){
-                          Toast.makeText(Forgot_Pass.this, "We have sent you the link to reset the password please reset it and login again.", Toast.LENGTH_SHORT).show();
+                 public void onComplete(@NonNull Task<Void> task)
+                 {
+                     progressDialog.hide();
+                      if(task.isSuccessful())
+                      {
+
+                          Toast.makeText(Forgot_Pass.this, "We have sent you the link to reset the password.Please reset it and login again.", Toast.LENGTH_SHORT).show();
                           Intent signin = new Intent(Forgot_Pass.this,Log_In.class);
                           startActivity(signin);
                       }
-                      else{
-                           Toast.makeText(Forgot_Pass.this, "Failed to send the link beacuase of some error please try again later.", Toast.LENGTH_SHORT).show();
+                      else
+                      {
+                           Toast.makeText(Forgot_Pass.this, "Failed to send the link beacuase of some error.Please try again later.", Toast.LENGTH_SHORT).show();
                       }
-                      progressBar.setVisibility(View.GONE);
+
                       }
                  });
             }

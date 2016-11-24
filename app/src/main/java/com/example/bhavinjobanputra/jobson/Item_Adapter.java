@@ -1,6 +1,7 @@
 package com.example.bhavinjobanputra.jobson;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,13 +25,22 @@ public class Item_Adapter extends RecyclerView.Adapter<Item_Adapter.MyViewHolder
     private List<Item_list> itemList;
     Fragment a;
 
+    public Item_Adapter(Fragment a, List<Item_list> itemList){
+        this.a = a;
+        this.itemList = itemList;
+    }
+
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView prodcut_id,category,size,brand,price;
         public ImageView i_image;
-
+//        List<Item_list> itemList = new List<Item_list>();
+       // Fragment a;
         public MyViewHolder(View view)
         {
             super(view);
+  //          this.itemList = itemList;
+           // this.a = a;
+            view.setOnClickListener(this);
             i_image = (ImageView) view.findViewById(R.id.icon);
             prodcut_id = (TextView) view.findViewById(R.id.product_id);
             category = (TextView) view.findViewById(R.id.category);
@@ -40,16 +51,12 @@ public class Item_Adapter extends RecyclerView.Adapter<Item_Adapter.MyViewHolder
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(a.getActivity(),Description_Item.class);
-            a.startActivity(intent);
-
+            Intent i = new Intent(a.getContext(),Description_Item.class);
+            a.startActivity(i);
         }
     }
 
-    public Item_Adapter(Fragment a, List<Item_list> itemList){
-        this.a = a;
-        this.itemList = itemList;
-    }
+
 
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())

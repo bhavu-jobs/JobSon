@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
@@ -42,14 +43,16 @@ public class Home_Default extends Fragment implements BaseSliderView.OnSliderCli
     private List<Item_list> item_list = new ArrayList<>();
     String url = "http://192.168.137.1/Jobson/files.php";
     String files[];
-    String image_url = "http://192.168.137.1/Jobson/images/";
+    String image_url;
     String new_url = "http://192.168.137.1/Jobson/tp.php";
     String product_id;
     String price;
     String brand;
     String size;
     String category;
-    String image;
+    String image="http://192.168.137.1/Jobson/photos/";
+    String slideImageUrl = "http://192.168.137.1/Jobson/images/";
+    static ImageLoader imageLoader;
     public Home_Default() {
 
     }
@@ -60,7 +63,7 @@ public class Home_Default extends Fragment implements BaseSliderView.OnSliderCli
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home__default, container, false);
         sliderLayout = (SliderLayout) view.findViewById(R.id.slider);
-
+        imageLoader = MySingleton.getInstance(getContext()).getImageLoader();
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>()
                 {
@@ -112,26 +115,9 @@ public class Home_Default extends Fragment implements BaseSliderView.OnSliderCli
                             size = jsonObject.getString("size");
                             brand = jsonObject.getString("brand_name");
                             price = jsonObject.getString("price");
-                            //image = jsonObject.getString("image_url");
-
-                            Item_list il = new Item_list(R.drawable.logo,product_id,category,size,brand,price);
+                            image_url = jsonObject.getString("image_url");
+                            Item_list il = new Item_list(image+image_url,product_id,category,size,brand,price,imageLoader);
                             item_list.add(il);
-                            /*ImageRequest imageRequest = new ImageRequest(url_final+image, new Response.Listener<Bitmap>() {
-                                @Override
-                                public void onResponse(Bitmap response)
-                                {
-                                    Log.d("Response","Response madyo baka!");
-
-                                }
-                            },100,100,null, Bitmap.Config.RGB_565, new Response.ErrorListener() {
-                                @Override
-                                public void onErrorResponse(VolleyError error)
-                                {
-                                    Toast.makeText(getContext(),"Volley Error",Toast.LENGTH_SHORT).show();
-                                    Log.d("VOlley",""+error.getMessage());
-                                }
-                            });*/
-
                             item_adapter.notifyDataSetChanged();
 
                         }
@@ -159,7 +145,7 @@ public class Home_Default extends Fragment implements BaseSliderView.OnSliderCli
         for(int i=0;i<files.length;i++)
         {
             TextSliderView textSliderView = new TextSliderView(getActivity());
-            textSliderView.image(image_url+files[i]).setOnSliderClickListener(this);
+            textSliderView.image(slideImageUrl+files[i]).setOnSliderClickListener(this);
             sliderLayout.addSlider(textSliderView);
         }
     }

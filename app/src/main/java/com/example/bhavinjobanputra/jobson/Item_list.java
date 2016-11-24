@@ -4,35 +4,37 @@ import android.graphics.Bitmap;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.android.volley.toolbox.ImageLoader;
+
 /**
  * Created by BhaVin Jobanputra on 08-10-2016.
  */
-public class Item_list {
+public class Item_list
+{
 
-    private String product_id,category,size,brand,price;
-    private int image;
+    private String product_id,category,size,brand,price,image_url;
+    private ImageLoader imageLoader;
 
 
 
-
-    public Item_list(int image, String product_id, String category, String size, String brand, String price)
+    public Item_list(String image, String product_id, String category, String size, String brand, String price,ImageLoader imageLoader)
     {
-        this.image = image;
+        this.image_url = image;
         this.category = "Category: "+category;
         this.price = "Price : " + price;
         this.brand ="Brand : " + brand;
         this.size= "Size: "+size;
         this.product_id= "Job_"+product_id;
+        this.imageLoader = imageLoader;
     }
 
-    public int getImage()
+    public String getImage()
     {
-        return image;
+        return image_url;
     }
-
-    public void setImage(int image)
+    public void setImage(String image)
     {
-        this.image = image;
+        this.image_url = image;
     }
 
     public String getProduct_id(){return  product_id;}
@@ -72,6 +74,15 @@ public class Item_list {
     public void setPrice(String price) {
         this.price = price;
         Log.d("sfksk",this.price);
+    }
+    public ImageLoader getImageLoader()
+    {
+        return imageLoader;
+    }
+
+    public void setImageLoader(ImageLoader imageLoader)
+    {
+        this.imageLoader = imageLoader;
     }
 
 

@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -40,7 +41,9 @@ public class Wall_Clocks extends Fragment
     String brand;
     String size;
     String category;
-    String image;
+    String image = "http://192.168.137.1/Jobson/photos/";
+    String image_url;
+    static ImageLoader imageLoader;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,6 +63,7 @@ public class Wall_Clocks extends Fragment
         //Toast.makeText(getContext(),url,Toast.LENGTH_SHORT).show();
         textView = (TextView) view.findViewById(R.id.textView);
         textView.setText(title);
+        imageLoader = MySingleton.getInstance(getContext()).getImageLoader();
         recyclerView = (RecyclerView) view.findViewById(R.id.rview);
         item_adapter = new Item_Adapter(this,item_list);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -92,10 +96,9 @@ public class Wall_Clocks extends Fragment
                         size = jsonObject.getString("size");
                         brand = jsonObject.getString("brand_name");
                         price = jsonObject.getString("price");
+                        image_url = jsonObject.getString("image_url");
 
-                        //image = jsonObject.getString("image_url");
-
-                        Item_list il = new Item_list(R.drawable.logo,product_id,category,size,brand,price);
+                        Item_list il = new Item_list(image+image_url,product_id,category,size,brand,price,imageLoader);
                         item_list.add(il);
                     }
                     item_adapter.notifyDataSetChanged();

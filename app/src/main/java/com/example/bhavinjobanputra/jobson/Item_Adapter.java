@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.NetworkImageView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,16 +34,12 @@ public class Item_Adapter extends RecyclerView.Adapter<Item_Adapter.MyViewHolder
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView prodcut_id,category,size,brand,price;
-        public ImageView i_image;
-//        List<Item_list> itemList = new List<Item_list>();
-       // Fragment a;
+        public NetworkImageView i_image;
         public MyViewHolder(View view)
         {
             super(view);
-  //          this.itemList = itemList;
-           // this.a = a;
             view.setOnClickListener(this);
-            i_image = (ImageView) view.findViewById(R.id.icon);
+            i_image = (NetworkImageView) view.findViewById(R.id.icon);
             prodcut_id = (TextView) view.findViewById(R.id.product_id);
             category = (TextView) view.findViewById(R.id.category);
             size = (TextView) view.findViewById(R.id.size);
@@ -72,7 +70,7 @@ public class Item_Adapter extends RecyclerView.Adapter<Item_Adapter.MyViewHolder
         holder.size.setText(i_list.getSize());
         holder.brand.setText(i_list.getBrand());
         holder.price.setText(i_list.getPrice());
-        holder.i_image.setImageResource(i_list.getImage());
+        holder.i_image.setImageUrl(i_list.getImage(),i_list.getImageLoader());
     }
 
     @Override

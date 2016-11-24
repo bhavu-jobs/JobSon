@@ -49,7 +49,11 @@ public class Item_Adapter extends RecyclerView.Adapter<Item_Adapter.MyViewHolder
 
         @Override
         public void onClick(View v) {
+
+            int position = getAdapterPosition();
+            Item_list item_list = itemList.get(position);
             Intent i = new Intent(a.getContext(),Description_Item.class);
+            i.putExtra("product",item_list.getProduct_id());
             a.startActivity(i);
         }
     }

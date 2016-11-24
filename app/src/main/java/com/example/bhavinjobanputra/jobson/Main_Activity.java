@@ -48,7 +48,10 @@ public class Main_Activity extends AppCompatActivity{
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_);
-        if (savedInstanceState == null)
+        if(getIntent().getIntExtra("cart",0)==1){
+            getSupportFragmentManager().beginTransaction().replace(R.id.default_content, new cart()).commit();
+        }
+        else
         {
             getSupportFragmentManager().beginTransaction().replace(R.id.default_content, new Home_Default()).commit();
         }

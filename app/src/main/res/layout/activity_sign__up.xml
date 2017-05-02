@@ -1,109 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="fill_parent"
     android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:background="@color/logo_color">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="56dp"
+        android:orientation="vertical"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
-        android:orientation="vertical"
-        >
-        <!-- Logo -->
+        android:paddingTop="56dp">
 
-        <!--User_name-->
+
         <ImageView
-            android:src="@drawable/logo"
+            android:id="@+id/imageView"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            android:layout_marginBottom="20dp"
             android:layout_gravity="center_horizontal"
-            android:id="@+id/imageView" />
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/logo" />
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Name"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:inputType="textCapWords"
-                android:id="@+id/user_name"/>
-        </android.support.design.widget.TextInputLayout>
-
-        <!--User_Email-->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp">
+
             <EditText
+                android:id="@+id/user_email_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/user_email_id"
-                android:textColorHint="@color/white"
+                android:hint="Email Address"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/white"
-                android:hint="Email Address"/>
+                android:textColorHint="@color/white" />
         </android.support.design.widget.TextInputLayout>
 
-        <!--Password-->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">
+
             <EditText
+                android:id="@+id/user_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:id="@+id/user_password"/>
+                android:textColorHint="@color/white" />
         </android.support.design.widget.TextInputLayout>
 
-        <!--Button-->
-        <android.support.v7.widget.AppCompatButton
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:inputType="textCapWords"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/mobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mobile Number"
+                android:inputType="phone"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:hint="Address"
+                android:inputType="textMultiLine"
+                android:lines="4"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/sign_up_btn"
-            android:text="Create Account"
-            android:background="#4082b8"
-            android:elevation="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:textColor="@color/white"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:padding="10dp"/>
+            android:background="#4082b8"
+            android:elevation="4dp"
+            android:padding="10dp"
+            android:text="Create Account"
+            android:textColor="@color/white" />
 
         <!--link-->
         <TextView
+            android:id="@+id/signin_link"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Already a Member? Sign In.."
-            android:textColor="@color/white"
-            android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:id="@+id/signin_link"
-            android:textAlignment="center"/>
+            android:layout_marginTop="8dp"
+            android:text="Already a Member? Sign In.."
+            android:textAlignment="center"
+            android:textColor="@color/white" />
 
 
         <ProgressBar
+            android:id="@+id/progressBar"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:id="@+id/progressBar"
             android:layout_gravity="center"
-            android:visibility="gone"/>
+            android:visibility="gone" />
     </LinearLayout>
 
 </ScrollView>

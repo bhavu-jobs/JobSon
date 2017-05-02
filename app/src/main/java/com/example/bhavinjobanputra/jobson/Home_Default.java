@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -37,24 +38,23 @@ import java.util.List;
 public class Home_Default extends Fragment implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener
 {
 
-    private SliderLayout sliderLayout;
+    static ImageLoader imageLoader;
     RecyclerView recyclerView;
-    private Item_Adapter item_adapter;
-    private List<Item_list> item_list = new ArrayList<>();
-    String url = "http://192.168.137.1/Jobson/files.php";
+    String url = "http://192.168.22.1/Jobson/files.php";
     String files[];
     String image_url;
-    String new_url = "http://192.168.137.1/Jobson/tp.php";
+    String new_url = "http://192.168.22.1/Jobson/tp.php";
     String product_id;
     String price;
     String brand;
     String size;
     String category;
-    String image="http://192.168.137.1/Jobson/photos/";
-    String slideImageUrl = "http://192.168.137.1/Jobson/images/";
-    static ImageLoader imageLoader;
+    String image = "http://192.168.22.1/Jobson/photos/";
+    String slideImageUrl = "http://192.168.22.1/Jobson/images/";
+    private SliderLayout sliderLayout;
+    private Card_Item_Adapter card_item_adapter;
+    private List<Card_List> card_list = new ArrayList<>();
     public Home_Default() {
-
     }
 
 
@@ -82,18 +82,18 @@ public class Home_Default extends Fragment implements BaseSliderView.OnSliderCli
 
         MySingleton.getInstance(getContext()).addToRequestQueue(stringRequest);
 
-        sliderLayout.setPresetTransformer(SliderLayout.Transformer.Accordion);
-        sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-        sliderLayout.setCustomAnimation(new DescriptionAnimation());
-        sliderLayout.setDuration(3000);
-        sliderLayout.addOnPageChangeListener(this);
-
+        // sliderLayout.setPresetTransformer(SliderLayout.Transformer.Accordion);
+        //sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+        // sliderLayout.setCustomAnimation(new DescriptionAnimation());
+        //sliderLayout.setDuration(3000);
+        //sliderLayout.addOnPageChangeListener(this);
         recyclerView = (RecyclerView) view.findViewById(R.id.rview);
-        item_adapter = new Item_Adapter(this,item_list);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        card_item_adapter = new Card_Item_Adapter(this, card_list);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
+        recyclerView.setNestedScrollingEnabled(true);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(item_adapter);
+        recyclerView.setAdapter(card_item_adapter);
         preparedata();
         return view;
     }
@@ -111,15 +111,13 @@ public class Home_Default extends Fragment implements BaseSliderView.OnSliderCli
                         {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
                             product_id = jsonObject.getString("product_id");
-                            category = jsonObject.getString("category");
                             size = jsonObject.getString("size");
                             brand = jsonObject.getString("brand_name");
                             price = jsonObject.getString("price");
                             image_url = jsonObject.getString("image_url");
-                            Item_list il = new Item_list(image+image_url,product_id,category,size,brand,price,imageLoader);
-                            item_list.add(il);
-                            item_adapter.notifyDataSetChanged();
-
+                            Card_List il = new Card_List(image + image_url, product_id, size, brand, imageLoader);
+                            card_list.add(il);
+                            card_item_adapter.notifyDataSetChanged();
                         }
                     }
                     catch (JSONException e)
@@ -133,7 +131,7 @@ public class Home_Default extends Fragment implements BaseSliderView.OnSliderCli
                 public void onErrorResponse(VolleyError error)
                 {
                     Toast.makeText(getContext(),"Error in Volley",Toast.LENGTH_LONG).show();
-                    Log.d("Here",error.getMessage());
+                    //  Log.d("Here",error.getMessage());
                 }
             });
 

@@ -1,38 +1,41 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.bhavinjobanputra.jobson.Home_Default">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <com.daimajia.slider.library.SliderLayout
             android:id="@+id/slider"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            custom:pager_animation="Accordion"
             app:auto_cycle="true"
-            app:indicator_visibility="visible"
-            app:pager_animation_span="1100"/>
-        <com.daimajia.slider.library.Indicators.PagerIndicator
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/indicator"
-            android:gravity="center">
-        </com.daimajia.slider.library.Indicators.PagerIndicator>
+            app:pager_animation_span="1100"
+            custom:pager_animation="Accordion" />
 
 
-        <android.support.v7.widget.RecyclerView
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="vertical"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:text="Trending This Week:"
+            android:textColor="@color/logo_color"
+            android:textSize="20dp" />
+
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/rview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@id/slider"
-            android:background="@color/white">
-        </android.support.v7.widget.RecyclerView>
+            android:background="@color/white"
+            android:scrollbars="vertical"></android.support.v7.widget.RecyclerView>
     </LinearLayout>
 
 </RelativeLayout>

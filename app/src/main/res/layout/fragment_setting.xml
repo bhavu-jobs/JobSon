@@ -2,30 +2,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.bhavinjobanputra.jobson.setting"
-    android:background="@color/logo_color">
+    android:background="@color/logo_color"
+    tools:context="com.example.bhavinjobanputra.jobson.setting">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal|top">
+        android:layout_gravity="center_horizontal|top"
+        android:orientation="vertical">
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:id="@+id/table_row"
-        android:background="@color/logo_color">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Settings"
-            android:layout_gravity="center_vertical"
-            android:id="@+id/textView" />
-    </TableRow>
+        <TableRow
+            android:id="@+id/table_row"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/logo_color">
 
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text="Settings"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+        </TableRow>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/underconstruction" />
     </LinearLayout>
 
 </FrameLayout>

@@ -21,7 +21,7 @@ public class Item_list
     {
         this.image_url = image;
         this.category = "Category: "+category;
-        this.price = "Price : " + price;
+        this.price = "Price : \u20B9" + price + "/carton";
         this.brand ="Brand : " + brand;
         this.size= "Size: "+size;
         this.product_id= "Job_"+product_id;

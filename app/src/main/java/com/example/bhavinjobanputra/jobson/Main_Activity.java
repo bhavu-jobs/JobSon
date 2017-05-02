@@ -26,6 +26,8 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -42,12 +44,14 @@ public class Main_Activity extends AppCompatActivity{
     DrawerLayout drawerLayout;
     FirebaseAuth auth;
     FirebaseAuth.AuthStateListener authListener;
+    FirebaseUser user;
 
 
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_);
+        user = FirebaseAuth.getInstance().getCurrentUser();
         if(getIntent().getIntExtra("cart",0)==1){
             getSupportFragmentManager().beginTransaction().replace(R.id.default_content, new cart()).commit();
         }
@@ -57,9 +61,10 @@ public class Main_Activity extends AppCompatActivity{
         }
         setToolbar();
         auth = FirebaseAuth.getInstance();
+
         authListener = new FirebaseAuth.AuthStateListener() {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
+
                 Log.d("options", "akhu");
                 if (user == null) {
                     Log.d("options", "puru");
@@ -67,6 +72,7 @@ public class Main_Activity extends AppCompatActivity{
                     startActivity(out);
                     finish();
                 }
+
             }
         };
         navigationView = (NavigationView) findViewById(R.id.navigation);
@@ -180,6 +186,9 @@ public class Main_Activity extends AppCompatActivity{
                 alert.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         auth.signOut();
+                        Intent i = new Intent(Main_Activity.this, Log_In.class);
+                        finish();
+                        startActivity(i);
                     }
                 });
                 alert.setNegativeButton("No", new DialogInterface.OnClickListener() {

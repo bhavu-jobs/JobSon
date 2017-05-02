@@ -3,6 +3,7 @@
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
+    <string name="server_name">http://192.168.137.1/</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>
@@ -21,4 +22,7 @@
 
     <string name="action_settings">Settings</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_us">Jobson India Private Limited is a company founded by two Student Entrepreneurs of Institute of Technology, Nirma University.
+    Jobson India Private Limited was founded in June,2016  when they were in their 3rd year of college. Despite being in college and having very tight schedule to follow, they started the company.
+    They were very passionate about starting their business. They have designed and coded all the websites and applications of the company by themselves.</string>
 </resources>

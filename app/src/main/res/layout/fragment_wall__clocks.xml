@@ -2,39 +2,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.bhavinjobanputra.jobson.Wall_Clocks"
-    android:background="@color/logo_color">
+    android:background="@color/logo_color"
+    tools:context="com.example.bhavinjobanputra.jobson.Wall_Clocks">
 
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal|top">
+        android:layout_gravity="center_horizontal|top"
+        android:orientation="vertical">
 
         <TableRow
+            android:id="@+id/table_row"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:id="@+id/table_row"
             android:background="@color/logo_color">
 
             <TextView
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Wall Clocks"
                 android:layout_gravity="center_vertical"
-                android:id="@+id/textView" />
+                android:paddingLeft="20dp"
+                android:text="Wall Clocks"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
         </TableRow>
 
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/rview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="vertical"
-            android:id="@+id/rview"
             android:layout_below="@id/table_row"
-            android:background="@color/white">
-        </android.support.v7.widget.RecyclerView>
+            android:background="@color/white"
+            android:scrollbars="vertical"></android.support.v7.widget.RecyclerView>
     </LinearLayout>
 </RelativeLayout>

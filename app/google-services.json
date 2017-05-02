@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "1024374296870",
-    "firebase_url": "https://jobson-cf868.firebaseio.com",
-    "project_id": "jobson-cf868",
-    "storage_bucket": "jobson-cf868.appspot.com"
+    "project_number": "637702197095",
+    "firebase_url": "https://jobson-35089.firebaseio.com",
+    "project_id": "jobson-35089",
+    "storage_bucket": "jobson-35089.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1024374296870:android:ac2b2e5df1d08bce",
+        "mobilesdk_app_id": "1:637702197095:android:ac2b2e5df1d08bce",
         "android_client_info": {
           "package_name": "com.example.bhavinjobanputra.jobson"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1024374296870-1418i7jrfvd71a4au3q2rs15mentiiqd.apps.googleusercontent.com",
+          "client_id": "637702197095-bv3smd4uj4qet09tc08rn2bu7s7q589s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bhavinjobanputra.jobson",
+            "certificate_hash": "f7f166a9444c548f60209ae25d1999322b6e6908"
+          }
+        },
+        {
+          "client_id": "637702197095-dksh58p7hudm8hlp48ree6gfb0ivab6v.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCCo5vcIzw3TWuruWu8qsG1qwiHoJowVAQ"
+          "current_key": "AIzaSyAkftkhwrPyFBZdWkMMWdOmNILkS0z1Gx8"
         }
       ],
       "services": {
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "637702197095-dksh58p7hudm8hlp48ree6gfb0ivab6v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

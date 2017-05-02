@@ -10,15 +10,11 @@ import android.widget.TextView;
 
 public class About_Us extends Fragment {
 
-    TextView textView;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view =inflater.inflate(R.layout.fragment_setting, container, false);
-        textView = (TextView) view.findViewById(R.id.textView);
-
+        View view = inflater.inflate(R.layout.fragment_about__us, container, false);
         return view;
     }
 

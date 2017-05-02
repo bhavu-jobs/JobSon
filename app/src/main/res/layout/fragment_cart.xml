@@ -1,68 +1,58 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.bhavinjobanputra.jobson.Wall_Clocks"
-    android:background="@color/logo_color">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/logo_color"
+    android:orientation="vertical"
+    tools:context="com.example.bhavinjobanputra.jobson.Description_Item">
 
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal|top">
+        android:layout_height="450dp"
+        android:layout_gravity="center_horizontal|top"
+        android:orientation="vertical">
 
         <TableRow
+            android:id="@+id/table_row"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:id="@+id/table_row"
             android:background="@color/logo_color">
 
+
             <TextView
+                android:id="@+id/total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Added Items to cart"
                 android:layout_gravity="center_vertical"
-                android:id="@+id/textView" />
+                android:paddingLeft="20dp"
+                android:text="Total"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
         </TableRow>
 
         <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="vertical"
             android:id="@+id/rview"
-            android:layout_below="@id/table_row"
-            android:background="@color/white">
-        </android.support.v7.widget.RecyclerView>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="25dip"
-            android:text="Total Cart Price: "
-            android:textColor="@color/white"
-            android:textSize="16dip"
-            android:id="@+id/cart_price"
-            android:background="#4082b8"
-            android:layout_marginTop="16dp"
-            android:paddingLeft="16dp"
-            android:gravity="center_vertical"
-            />
-
-        <android.support.v7.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/place_order"
-            android:layout_marginBottom="24dp"
-            android:layout_marginTop="24dp"
-            android:padding="12dp"
-            android:textColor="@color/white"
-            android:text="Place Order"
-            android:elevation="4dp"
-            android:layout_gravity="center_horizontal"
-            android:background="#4082b8" />
-
+            android:layout_below="@id/table_row"
+            android:background="@color/white"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbars="vertical"></android.support.v7.widget.RecyclerView>
 
     </LinearLayout>
-</RelativeLayout>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/place_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+
+        android:background="#4082b8"
+        android:elevation="4dp"
+        android:padding="12dp"
+        android:text="Place Order"
+        android:textColor="@color/white" />
+</LinearLayout>
+
+

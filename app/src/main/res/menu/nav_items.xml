@@ -5,7 +5,7 @@
         <item
             android:id="@+id/home"
             android:icon="@drawable/ic_home"
-            android:title="Home"/>
+            android:title="Home" />
         <item
             android:id="@+id/subheader"
             android:title="Categories">
@@ -13,19 +13,19 @@
                 <item
                     android:id="@+id/wallclocks"
                     android:icon="@drawable/ic_wall_clock"
-                    android:title="Wall Clocks"/>
+                    android:title="Wall Clocks" />
                 <item
                     android:id="@+id/familyff"
                     android:icon="@drawable/ic_ff"
-                    android:title="Family Photo Frame"/>
+                    android:title="Family Photo Frame" />
                 <item
                     android:id="@+id/mandir"
                     android:icon="@drawable/ic_mandir"
-                    android:title="Mandir"/>
+                    android:title="Mandir" />
                 <item
                     android:id="@+id/lighting"
                     android:icon="@drawable/ic_mandir"
-                    android:title="Lighting Frames"/>
+                    android:title="Lighting Frames" />
             </menu>
         </item>
         <item
@@ -35,11 +35,11 @@
                 <item
                     android:id="@+id/settings"
                     android:icon="@drawable/ic_settings"
-                    android:title="Settings"/>
+                    android:title="Settings" />
                 <item
                     android:id="@+id/about_us"
                     android:icon="@drawable/ic_about_us"
-                    android:title="About Us"/>
+                    android:title="About Us" />
             </menu>
         </item>
     </group>

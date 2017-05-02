@@ -29,10 +29,9 @@ import java.util.List;
 
 public class Wall_Clocks extends Fragment
 {
-    String url= "http://192.168.137.1/Jobson/category.php";
+    static ImageLoader imageLoader;
+    String url = "http://192.168.22.1/Jobson/category.php";
     RecyclerView recyclerView;
-    private Item_Adapter item_adapter;
-    private List<Item_list> item_list = new ArrayList<>();
     TextView textView;
     String title;
     int choice;
@@ -41,9 +40,10 @@ public class Wall_Clocks extends Fragment
     String brand;
     String size;
     String category;
-    String image = "http://192.168.137.1/Jobson/photos/";
+    String image = "http://192.168.22.1/Jobson/photos/";
     String image_url;
-    static ImageLoader imageLoader;
+    private Item_Adapter item_adapter;
+    private List<Item_list> item_list = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,7 +68,7 @@ public class Wall_Clocks extends Fragment
         item_adapter = new Item_Adapter(this,item_list);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(new Divider(getActivity(),Divider.VERTICAL_LIST));
+        recyclerView.addItemDecoration(new Divider(getActivity()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(item_adapter);
         preparedata();

@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Log_In extends AppCompatActivity {
 
@@ -32,6 +33,8 @@ public class Log_In extends AppCompatActivity {
     TextView forgotpass;
     ProgressDialog progressDialog;
     int i=0;
+    String email;
+    String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -39,7 +42,8 @@ public class Log_In extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         progressDialog = new ProgressDialog(Log_In.this);
         firebaseAuth = FirebaseAuth.getInstance();
-        if(firebaseAuth.getCurrentUser() != null)
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if (user != null && user.isEmailVerified())
         {
             Intent main_activity = new Intent(Log_In.this,Main_Activity.class);
             startActivity(main_activity);
@@ -66,7 +70,6 @@ public class Log_In extends AppCompatActivity {
         sign_up_text.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 Intent sign_up = new Intent(getApplicationContext(),Sign_Up.class);
-               // startActivityForResult(intent,REQUEST_SIGNUP);
                 startActivity(sign_up);
             }
         });
@@ -79,9 +82,6 @@ public class Log_In extends AppCompatActivity {
         });
 
     }
-
-    String email;
-    String password;
 
     public void login_method()
     {
@@ -107,8 +107,15 @@ public class Log_In extends AppCompatActivity {
                 if(!task.isSuccessful()){
                     onloginfailed_incorrect();
                 }
-                else
-                    onloginSuccess();
+                else {
+                    FirebaseUser user = firebaseAuth.getCurrentUser();
+                    if (user.isEmailVerified()) {
+                        onloginSuccess();
+                    } else {
+                        email_not_verified();
+                    }
+                }
+
             }
         });
     }
@@ -162,7 +169,13 @@ public class Log_In extends AppCompatActivity {
     public void onloginfailed()
     {
         progressDialog.hide();
-        Toast.makeText(getBaseContext(),"Login Failed Please Try Again!!",Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "Login Failed Please Try Again!", Toast.LENGTH_LONG).show();
+        Log_In_Btn.setEnabled(true);
+    }
+
+    public void email_not_verified() {
+        progressDialog.hide();
+        Toast.makeText(getBaseContext(), "Please verify your email to continue!!", Toast.LENGTH_LONG).show();
         Log_In_Btn.setEnabled(true);
     }
 

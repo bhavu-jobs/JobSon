@@ -4,14 +4,14 @@
     <item
         android:id="@+id/cart"
         android:icon="@drawable/ic_cart"
-        app:showAsAction="always"
-        android:title="Cart" />
+        android:title="Cart"
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/sign_out"
         android:icon="@drawable/ic_sign_out"
-        app:showAsAction="ifRoom"
-        android:title="Sign Out"/>
+        android:title="Sign Out"
+        app:showAsAction="ifRoom" />
 
 
 </menu>
